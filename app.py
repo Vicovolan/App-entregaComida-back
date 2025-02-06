@@ -27,7 +27,7 @@ def opcao_invalida():
 
 def cadastrar_novo_restaurante():
     os.system('cls')
-    print('Cadastrar novo restaurante\n')
+    exibir_subtitulo('Cadastrar novo restaurante\n')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria_do_restaurante = input(f'Digite a categoria do restaurante: {nome_do_restaurante}: ')
     dados_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria_do_restaurante, 'ativo': False}
@@ -37,14 +37,20 @@ def cadastrar_novo_restaurante():
 
 def exibir_subtitulo(subtitulo):
     os.system('cls')
+    linha = '*'* (len(subtitulo))
+    print(linha)
     print(subtitulo)
+    print(linha)
     print()
 
 def listar_restaurantes():  
     os.system('cls')
     exibir_subtitulo('Listar restaurantes\n')
     for restaurante in restaurantes:
-        print(f'.{restaurante["nome"]} - {restaurante["categoria"]} - {"Ativo" if restaurante["ativo"] else "Inativo"}')
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = restaurante['ativo']
+        print(f'Nome: {nome_restaurante} | Categoria: {categoria} | Status: {"Ativo" if ativo else "Inativo"}')
     print('\n')
     voltar_ao_menu()
 
